@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <title>THECUBECORNER</title>
+    <style>
+        :root{
+            --color-background: #3a3b3c;
+            --color-secondary: #ffa500;
+            --color-primary: #1261a0;
+            --color-grey-1: #d4d4d4;
+            --color-grey-2: #666b6c;
+            --color-grey-3: #4d4e4f;
+            --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
+            --box-shadow-2: 0 3px 15px rgba(0,0,0,.7);
+        }
+        body{
+            background-color: var(--color-background);
+        }
+        html{
+            font-family: Rubik, serif;
+            color: var(--color-secondary);
+        }
+        .title-text{
+            text-align: center;
+        }
+        .header-con{
+            background-color: var(--color-grey-3);
+            text-align: center;
+            font-family: Rubik, serif;
+            z-index: 300;
+            width: 100%;
+            height: 120px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .text-con{
+            margin-top: -10px;
+            line-height: 0.4;
+        }
+        .cube-index-title{
+            font-size: 3rem;
+        }
+        .link-text{
+            background-color: var(--color-secondary);
+            border-radius: 5px;
+            color: var(--color-primary);
+            box-shadow: var(--box-shadow-1);
+            transition: all .4s ease-in-out;
+        }
+        .link-text:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        main{
+            margin-top: 170px;
+        }
+        .directory-title{
+            font-size: 2rem;
+        }
+        .shop-directory-con{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 20px;
+        }
+        .directory-button{
+            width: 100%;
+            height: 200px;
+            background-color: var(--color-grey-1);
+            border-radius: 5px;
+            box-shadow: var(--box-shadow-1);
+            transition: all .4s ease-in-out;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .item-image-con{
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            transition: all .4s ease-in-out;
+            box-shadow: var(--box-shadow-1);
+        }
+        .item-image{
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .item-image-con:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        .directory-item-text{
+            margin-top: 45%;
+            text-align: center;
+            color: var(--color-primary);
+            font-size: 150%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-con">
+        <div class="text-con">
+            <h1 class="cube-index-title">Cube Index</h1>
+            <a class="link-text" href="main.html">back to homepage</a>
+        </div>
+    </div>
+</header>
+    <main>
+        <h2 class="directory-title title-text">Directory</h2>
+        <div class="shop-directory-con">
+            <div class="a2x2 directory-button">
+                <div class="item-image-con">
+                    <img src="images/shop-images/2x2/gan-249-v2.jpg" alt="2x2" class="item-image">
+                </div>
+                <h3 class="directory-item-text"><a>2x2s</a></h3>
+            </div>
+            <div class="a3x3 directory-button">
+                <div class="item-image-con">
+                    <img src="images/shop-images/3x3/yj-mgc3-3x3-elite-stickerless-3_800x.webp" alt="3x3" class="item-image">
+                </div>
+                <h3 class="directory-item-text"><a>3x3s</a></h3>
+            </div>
+            <div class="a4x4 directory-button">
+                <div class="item-image-con">
+                    <img src="images/shop-images/4x4/YJ-MGC-Magnetic-4x4-Stickerless-Bright.jpg" alt="4x4" class="item-image">
+                </div>
+                <h3 class="directory-item-text"><a>4x4s</a></h3>
+            </div>
+            <div class="a5x5 directory-button">
+                <div class="item-image-con">
+                    <img src="images/shop-images/5x5/5x5mgc.jpg" alt="5x5" class="item-image">
+                </div>
+                <h3 class="directory-item-text"><a>5x5s</a></h3>
+            </div>
+            <div class="a6x6 directory-button">
+                <div class="item-image-con">
+                    <img src="images/shop-images/6x6/6x6cyclone.jpg" alt="6x6" class="item-image">
+                </div>
+                <h3 class="directory-item-text"><a>6x6s</a></h3>
+            </div>
+            <div class="pyraminx directory-button">
+                <div class="item-image-con">
+                    <img src="images/shop-images/other-cubes/wca/pyraminx/gan-pyraminx-m-standard.jpg" alt="pyraminx" class="item-image">
+                </div>
+                <h3 class="directory-item-text"><a>Pyraminxes</a></h3>
+            </div>
+            <div class="skewb directory-button">
+                <div class="item-image-con">
+                    <img src="images/shop-images/other-cubes/wca/skewb/yuxinskewb.jpg" alt="skewb" class="item-image">
+                </div>
+                <h3 class="directory-item-text"><a>Skewbs</a></h3>
+            </div>
+            <div class="square-1 directory-button">
+                <div class="item-image-con">
+                    <img src="images/shop-images/other-cubes/wca/square-1/square1.jpg" alt="square-1" class="item-image">
+                </div>
+                <h3 class="directory-item-text"><a>Square-1s</a></h3>
+            </div>
+            <div class="other-cubes directory-button">
+                <div class="item-image-con">
+                    <img src="images/shop-images/other-cubes/non-wca/gan_20mirror_20m_580x.webp" alt="other cubes" class="item-image">
+                </div>
+                <h3 class="directory-item-text"><a>Other Cubes</a></h3>
+            </div>
+            <div class="utilities directory-button">
+                <div class="item-image-con">
+                    <img src="images/shop-images/others/Lightspeed-Lube-Bundle.jpg" alt="2x2" class="item-image">
+                </div>
+                <h3 class="directory-item-text"><a>Utilities</a></h3>
+            </div>
+        </div>
+        <h2 class="directory-title title-text">Other Stuff</h2>
+    </main>
+</body>
+</html>
