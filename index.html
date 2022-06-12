@@ -1,1 +1,572 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <title>THECUBECORNER</title>
+    <style>
+        :root{
+            --color-background: #3a3b3c;
+            --color-secondary: #ffa500;
+            --color-primary: #1261a0;
+            --color-grey-1: #d4d4d4;
+            --color-grey-2: #666b6c;
+            --color-grey-3: #4d4e4f;
+            --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
+            --box-shadow-2: 0 3px 15px rgba(0,0,0,.7);
+        }
+        body{
+            background-color: var(--color-background);
+        }
+        html{
+            font-family: Rubik, serif;
+            color: var(--color-secondary);
+        }
+        main{
+            animation-name: exit-enter;
+            animation-duration: 5.5s;
+            animation-timing-function: ease-in-out;
+        }
+        .startup-screen{
+            z-index: 100;
+            transform: translateY(-100%);
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-background);
+            animation-name: startup;
+            animation-duration: 5.5s;
+        }
+        .startup-screen-sec{
+            align-items: center;
+            padding: 3rem 18rem;
+            animation-name: exit;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-delay: 4s;
+        }
+        .startup-text{
+            animation-name: center;
+            animation-timing-function: ease-in-out;
+            animation-duration: 1.5s;
+            transform: translateY(60%);
+        }
+        .welcome-sign{
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        .web-name{
+            font-size: 2rem;
+            text-align: center;
+        }
+        .bar{
+            margin-top: 100px;
+            align-self: center;
+            border-radius: 10px;
+            border: 1px solid grey;
+            background-color: var(--color-grey-1);
+            width: 100%;
+            height: 30px;
+            animation-name: loading-bar;
+            animation-duration: 3s;
+            animation-timing-function: ease-in-out;
+        }
+        .bar-progress{
+            background-color: var(--color-primary);
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            border-width: 0;
+            animation-name: loading-bar-progress;
+            animation-duration: 3s;
+            animation-timing-function: ease-in-out;
+        }
+        .ready-text{
+            color: rgba(225,165,0,0);
+            animation-name: exit-warning;
+            animation-duration: 2s;
+            animation-delay: 4s;
+            animation-timing-function: ease-in-out;
+        }
+        .top-bar-con{
+            z-index: 300;
+            width: 100%;
+            height: 70px;
+            background-color: var(--color-grey-2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .top-button{
+            text-align: center;
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            height: 50px;
+            border-width: 0;
+            border-radius: 5px;
+            font-family: Rubik, serif;
+            font-size: 30px;
+            font-weight: bold;
+            margin-left: 3.3%;
+            margin-top: 10px;
+            box-shadow: var(--box-shadow-1);
+            transition: all .4s ease-in-out;
+        }
+        .top-button:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        .directory-con{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .left-directory{
+            background-color: var(--color-grey-2);
+            width: 60%;
+            height: 700px;
+            position: absolute;
+            top: 100px;
+            left: 10px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow-1);
+        }
+        .right-directory{
+            background-color: var(--color-grey-2);
+            width: 35%;
+            height: 700px;
+            position: absolute;
+            top: 100px;
+            left: 63%;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow-1);
+        }
+        .left-item{
+            margin-top: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            background-color: var(--color-grey-3);
+            box-shadow: var(--box-shadow-1);
+            border-radius: 5px;
+            transition: all .4s ease-in-out;
+        }
+        .left-item:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        .left-item-image{
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: all .4s ease-in-out;
+        }
+        .left-item-image:hover{
+            transform: scale(1.02);
+        }
+        .left-item-text{
+            text-align: center;
+            transition: all .4s ease-in-out;
+        }
+        .news-con{
+            margin-top: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 5px;
+            height: 40%;
+            background-color: var(--color-grey-3);
+            box-shadow: var(--box-shadow-1);
+            transition: all .4s ease-in-out;
+        }
+        .news-con:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        .news-title{
+            text-align: center;
+            margin-top: 20px;
+        }
+        .tutorials-con{
+            margin-top: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 5px;
+            height: 50%;
+            background-color: var(--color-grey-3);
+            box-shadow: var(--box-shadow-1);
+            transition: all .4s ease-in-out;
+        }
+        .tutorials-con:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        .tutorials-title{
+            text-align: center;
+        }
+        .tutorial-link{
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            width: 90%;
+            height: 50px;
+            border-width: 0;
+            border-radius: 5px;
+            font-family: Rubik, serif;
+            font-size: 30px;
+            font-weight: bold;
+            margin-left: 3.3%;
+            margin-top: 10px;
+            box-shadow: var(--box-shadow-1);
+            transition: all .4s ease-in-out;
+            text-align: center;
+        }
+        .tutorial-link:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        .shop-con{
+            width: 99%;
+            background-color: var(--color-grey-2);
+            height: 2150px;
+            margin-top: 370px;
+            border-radius: 5px;
+            animation-name: hide-bottom;
+            animation-duration: 5.5s;
+            animation-timing-function: ease-in-out;
+        }
+        .shop-title{
+            text-align: center;
+            margin-top: 20px;
+        }
+        .shop-title-con{
+            margin-top: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 5px;
+            height: 30px;
+            background-color: var(--color-grey-3);
+            box-shadow: var(--box-shadow-1);
+            transition: all .4s ease-in-out;
+        }
+        .shop-title-con:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        .shop-sec{
+            width: 99%;
+            height: 382px;
+            border-radius: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 10px;
+            background-color: var(--color-grey-3);
+            transition: all .4s ease-in-out;
+            overflow: auto;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-gap: 50px;
+        }
+        .shop-sec:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        .a2x2-recommendation{
+            width: 300px;
+            height: 364px;
+            background-color: var(--color-grey-1);
+            border-radius: 5px;
+            box-shadow: var(--box-shadow-1);
+            transition: all .4s ease-in-out;
+        }
+        .a2x2-recommendation:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        .shop-item-image{
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: all .4s ease-in-out;
+        }
+        .shop-item-image:hover{
+            transform: scale(1.02);
+        }
+        .shop-item-name{
+            margin-top: 30px;
+            color: var(--color-primary);
+            text-align: center;
+        }
+        .a3x3-recommendation{
+            width: 300px;
+            height: 364px;
+            background-color: var(--color-grey-1);
+            border-radius: 5px;
+            box-shadow: var(--box-shadow-1);
+            transition: all .4s ease-in-out;
+        }
+        .a3x3-recommendation:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        .other-cubes-recommendation{
+            width: 300px;
+            height: 364px;
+            background-color: var(--color-grey-1);
+            border-radius: 5px;
+            box-shadow: var(--box-shadow-1);
+            transition: all .4s ease-in-out;
+        }
+        .other-cubes-recommendation:hover{
+            box-shadow: var(--box-shadow-2);
+        }
+        .tutorial-link-text{
+            color: var(--color-secondary);
+        }
+        .top-bar-button-text{
+            color: var(--color-secondary);
+        }
+    </style>
+</head>
+<body>
+<section class="startup-screen loading-screen">
+    <div class="startup-screen-sec">
+        <div class="startup-text">
+            <h2 class="welcome-sign">Welcome To</h2>
+            <h1 class="web-name">The Cubing Corner</h1>
+        </div>
+        <div class="loading-bar">
+            <div class="bar">
+                <div class="bar-progress"></div>
+            </div>
+        </div>
+    </div>
+    <div class="ready-sec">
+        <div class="ready-text">
+            <h2 class="web-name">Ready!</h2>
+        </div>
+    </div>
+</section>
+<main>
+    <section class="top-bar">
+        <div class="top-bar-sec">
+            <div class="top-bar-con">
+                <div class="top-button"><a class="top-bar-button-text" href="product-viewer.html">Index</a></div>
+                <div class="top-button"><a class="top-bar-button-text" href="">Tutorials</a></div>
+                <div class="top-button"><a class="top-bar-button-text" href="">About</a></div>
+                <div class="top-button"><a class="top-bar-button-text" href="">Info</a></div>
+            </div>
+        </div>
+    </section>
+    <section class="directory">
+        <div class="directory-con">
+            <div class="left-directory">
+                <div class="left-directory-items">
+                    <div class="left-item">
+                        <img src="images/main-images/cube.webp" alt="3x3" class="left-item-image">
+                        <div class="left-item-text">
+                            <h2>How To Solve A 3x3</h2>
+                            <p>
+                                A basic guide on solving the classic 3x3 Rubik's Cube using the beginner method.
+                                Learn the basics to one of the most fun, inquisitive and addictive puzzles of the 21st century.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="left-item">
+                        <div class="left-item-text">
+                            <h2>Maintaining Your Cube</h2>
+                            <p>
+                                Maintaining your cube is one of the main steps to speedcubing.
+                                Learn the basics to cleaning, lubing and tensioning your cube, as well as setting up the cube.
+                            </p>
+                        </div>
+                        <img src="images/main-images/img.png" alt="3x3" class="left-item-image">
+                    </div>
+                    <div class="left-item">
+                        <img src="images/main-images/cubes.jpg" alt="3x3" class="left-item-image">
+                        <div class="left-item-text">
+                            <h2>Lots Of Cubes!</h2>
+                            <p>
+                                There are many types of cubes in the world.
+                                Learn the names of all the WCA puzzles and events, as well as non-WCA puzzles.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-directory">
+                <div class="news-con">
+                    <h2 class="news-title">News</h2>
+                    <ul>
+                        <li>The New GAN mirror cube has released</li>
+                        <li>Jperm 1 million subscribers milestone</li>
+                        <li>Max Park holds 4x4, 5x5, 6x6 and 7x7 WR titles all at once!</li>
+                        <li>Jperm holds the 3x3 fewest moves WR for canada regions</li>
+                        <li>3x3 average WR broken by polish speedcuber Tymon Kolasinski with 5.09 seconds.</li>
+                    </ul>
+                </div>
+                <div class="tutorials-con">
+                    <h2 class="tutorials-title">Basic Tutorials</h2>
+                    <div class="2x2 tutorial-link">
+                        <a class="tutorial-link-text" href="2x2-tutorial.html">2x2</a>
+                    </div>
+                    <div class="3x3 tutorial-link">
+                        <a class="tutorial-link-text">3x3</a>
+                    </div>
+                    <div class="4x4 tutorial-link">
+                        <a class="tutorial-link-text">4x4</a>
+                    </div>
+                    <div class="5x5 tutorial-link">
+                        <a class="tutorial-link-text">5x5</a>
+                    </div>
+                    <div class="pyraminx tutorial-link">
+                        <a class="tutorial-link-text">pyraminx</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="Shopping">
+        <div class="shop-con">
+            <div class="shop-title-con">
+                <h2 class="shop-title">Cube Store</h2>
+            </div>
+            <div class="shop-main-con">
+                <div class="2x2-best">
+                    <h2 class="shop-title">Popular 2x2s</h2>
+                    <div class="shop-sec">
+                        <div class="a2x2-recommendation YJ-MGC-Magnetic-2x2-Stickerless-(bright)">
+                            <img src="images/shop-images/2x2/yjmgc2x2stickerlessbright.jpg" alt="YJ-MGC-Magnetic-2x2-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name"><a href="shop-2x2-YJMGCMAGNETIC2X2.html">YJ MGC Magnetic 2x2 (stickerless, bright)</a></h2>
+                        </div>
+                        <div class="a2x2-recommendation QiYi-MS-Magnetic-2x2-Stickerless-(bright)">
+                            <img src="images/shop-images/2x2/2x2_qiyi_ms_magnetic.jpg" alt="QiYi-MS-Magnetic-2x2-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">QiYi MS Magnetic 2x2 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a2x2-recommendation YuXin-Little-Magic-2x2-Stickerless-(bright)">
+                            <img src="images/shop-images/2x2/yuxinlittlemagic2x2.jpg" alt="YuXin-Little-Magic-2x2-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">YuXin Little Magic 2x2 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a2x2-recommendation YJ-YuPo-V2-Magnetic-2x2-Stickerless-(bright)">
+                            <img src="images/shop-images/2x2/yjyuop2x2magneticstickerless.webp" alt="YJ-YuPo-V2-Magnetic-2x2-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">YJ YuPo V2 Magnetic 2x2 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a2x2-recommendation MoFang-JiaoShi-Meilong-2x2-Stickerless-(bright)">
+                            <img src="images/shop-images/2x2/mofangjiashimeilong2x2magnetic.jpg" alt="MoFang-JiaoShi-Meilong-2x2-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">MoFang JiaoShi Meilong 2x2 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a2x2-recommendation YJ-MGC-Elite-Magnetic-2x2-Stickerless-(bright)">
+                            <img src="images/shop-images/2x2/yjmgcelite2x2.jpg" alt="YJ-MGC-Elite-Magnetic-2x2-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">YJ MGC Elite Magnetic 2x2 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a2x2-recommendation GAN-249-V2-M-2x2-Stickerless-(bright)">
+                            <img src="images/shop-images/2x2/gan249v2m2x2.webp.crdownload" alt="GAN-249-V2-M-2x2-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">GAN 249 V2 M 2x2 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a2x2-recommendation DaYan-TengYun-M-2x2-Stickerless-(bright)">
+                            <img src="images/shop-images/2x2/dayan-tengyun-m-2x2-stickerless-magnetic-a_800x.webp" alt="DaYan-TengYun-M-2x2-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">DaYan TengYun M 2x2 Magnetic (stickerless, bright)</h2>
+                        </div>
+                        <div class="a2x2-recommendation MoFang-JiaoShi-MeiLong-Magnetic-2x2-Stickerless-(bright)">
+                            <img src="images/shop-images/2x2/mfjsmeilongm.webp" alt="MoFang-JiaoShi-MeiLong-Magnetic-2x2-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">MoFang JiaoShi Meilong 2x2 Magnetic (stickerless, bright)</h2>
+                        </div>
+                        <div class="a2x2-recommendation GAN-249-V2-2x2-Stickerless-(bright)">
+                            <img src="images/shop-images/2x2/gan-249-v2.jpg" alt="GAN-249-V2-2x2-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">GAN 249 V2 2x2 (stickerless, bright)</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="3x3-best">
+                    <div class="shop-sec">
+                        <div class="a3x3-recommendation MoYu-RS3-M-2020-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/MoYu-RS3-M-2020-3x3-Stickerless-Bright.jpg" alt="MoYu-RS3-M-2020-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">MoYu RS3 M 2020 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a3x3-recommendation YuXin-little-magic-3x3-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/Yuxin-Little-Magic-55.5mm-3x3-Mini-Speed-Cube-Puzzle-DailyPuzzles-1642766085_700x700.webp" alt="YuXin-little-magic-3x3-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">YuXin Little Magic 3x3(stickerless, bright)</h2>
+                        </div>
+                        <div class="a3x3-recommendation GAN-11-M-Pro-3x3-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/Gan-11-m-pro.jpg" alt="GAN-11-M-Pro-3x3-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">GAN 11 M Pro 3x3 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a3x3-recommendation QiYi-MS-Magnetic-3x3-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/qiyims3x3magnetic.webp" alt="QiYi-MS-Magnetic-3x3-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">QiYi MS Magnetic 3x3 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a3x3-recommendation GAN-356-XS-magnetic-3x3-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/GAN-356-XS-Magnetic-3x3-Stickerless-Bright.jpg" alt="GAN-356-XS-magnetic-3x3-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">GAN 356 XS Magnetic (stickerless, bright)</h2>
+                        </div>
+                        <div class="a3x3-recommendation QiYi-Thunderclap-V3-M-3x3-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/QiYiThunderclapV3M20203x3MagneticSpeedCubecopy_700x700.webp" alt="QiYi-Thunderclap-V3-M-3x3-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">QiYi Thunderclap V3 M 3x3 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a3x3-recommendation MoYu-RS3-M-2021-Maglev-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/RS3M2021Maglev_1024x.jpg.crdownload" alt="MoYu-RS3-M-2021-maglev-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">MoYu RS3 M 2021 (MagLev, stickerless, bright)</h2>
+                        </div>
+                        <div class="a3x3-recommendation YJ-MGC-Elite-Magnetic-3x3-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/yj-mgc3-3x3-elite-stickerless-3_800x.webp" alt="YJ-MGC-Elite-Magnetic-3x3-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">YJ MGC Elite Magnetic 3x3 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a3x3-recommendation QiYi-Valk-3-3x3-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/ValkEliteM_1200x1200.webp.crdownload" alt="QiYi-Valk-3-3x3-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">QiYi Valk 3 3x3 (stickerless, bright)</h2>
+                        </div>
+                        <div class="a3x3-recommendation">
+                            <h2 class="shop-item-name">???</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="other-cubes">
+                    <div class="shop-sec">
+                        <div class="other-cubes-recommendation YJ-MGC-Magnetic-4x4-Stickerless-(bright)">
+                            <img src="images/shop-images/4x4/YJ-MGC-Magnetic-4x4-Stickerless-Bright.jpg" alt="YJ-MGC-Magnetic-4x4-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">YJ MGC Magnetic 4x4 (stickerless, bright)</h2>
+                        </div>
+                        <div class="other-cubes-recommendation Gan-Mirror-M-(purple)">
+                            <img src="images/shop-images/other-cubes/non-wca/gan_20mirror_20m_580x.webp" alt="Gan-Mirror-M-(purple)" class="shop-item-image">
+                            <h2 class="shop-item-name">GAN Mirror M (purple)</h2>
+                        </div>
+                        <div class="other-cubes-recommendation Gan-magnetic-pyraminx-standard-Stickerless-(bright)">
+                            <img src="images/shop-images/other-cubes/wca/pyraminx/gan-pyraminx-m-standard.jpg" alt="Gan-magnetic-pyraminx-standard-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">GAN Magnetic Pyraminx (standard, stickerless, bright)</h2>
+                        </div>
+                        <div class="other-cubes-recommendation YuXin-Little-Magic-Skewb-Stickerless-(bright)">
+                            <img src="images/shop-images/other-cubes/wca/skewb/yuxinskewb.jpg" alt="YuXin-Little-Magic-Skewb-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">YuXin Little Magic Skewb (stickerless, bright)</h2>
+                        </div>
+                        <div class="other-cubes-recommendation MoYu-RS3-M-2020-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/MoYu-RS3-M-2020-3x3-Stickerless-Bright.jpg" alt="MoYu-RS3-M-2020-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">MoYu RS3 M 2020 (stickerless, bright)</h2>
+                        </div>
+                        <div class="other-cubes-recommendation MoYu-RS3-M-2020-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/MoYu-RS3-M-2020-3x3-Stickerless-Bright.jpg" alt="MoYu-RS3-M-2020-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">MoYu RS3 M 2020 (stickerless, bright)</h2>
+                        </div>
+                        <div class="other-cubes-recommendation MoYu-RS3-M-2020-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/MoYu-RS3-M-2020-3x3-Stickerless-Bright.jpg" alt="MoYu-RS3-M-2020-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">MoYu RS3 M 2020 (stickerless, bright)</h2>
+                        </div>
+                        <div class="other-cubes-recommendation MoYu-RS3-M-2020-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/MoYu-RS3-M-2020-3x3-Stickerless-Bright.jpg" alt="MoYu-RS3-M-2020-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">MoYu RS3 M 2020 (stickerless, bright)</h2>
+                        </div>
+                        <div class="other-cubes-recommendation MoYu-RS3-M-2020-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/MoYu-RS3-M-2020-3x3-Stickerless-Bright.jpg" alt="MoYu-RS3-M-2020-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">MoYu RS3 M 2020 (stickerless, bright)</h2>
+                        </div>
+                        <div class="other-cubes-recommendation MoYu-RS3-M-2020-Stickerless-(bright)">
+                            <img src="images/shop-images/3x3/MoYu-RS3-M-2020-3x3-Stickerless-Bright.jpg" alt="MoYu-RS3-M-2020-Stickerless-(bright)" class="shop-item-image">
+                            <h2 class="shop-item-name">MoYu RS3 M 2020 (stickerless, bright)</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="special-edition">
+                    <div class="shop-sec"></div>
+                </div>
+                <div class="other-utilities">
+                    <div class="shop-sec"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
