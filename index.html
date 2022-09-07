@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <title>TheCubeCorner</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <section class="startup-screen active" id="startup-screen">
     <div class="direc-sec">
         <div class="startup-bg-deco"></div>
         <img src="images/tcc%20cube.png" class="startup-title-image">
-        <div class="startup-directory">
-            <p id="proceed-button">Proceed</p>
+        <div class="startup-directory" id="startup-directory">
+            <p id="lessons-button" class="head-button">Lessons</p>
+            <div class="lesson-choose-bar" id="lcb">
+                <p id="basics-button" class="head-button lesson-button">Cube Basics</p>
+                <p id="3x3-button" class="head-button lesson-button">3x3</p>
+                <p id="2x2-button" class="head-button lesson-button">2x2</p>
+                <p id="4x4-button" class="head-button lesson-button">4x4</p>
+                <p id="advanced-button" class="head-button lesson-button">Advanced</p>
+                <p id="extras-button" class="head-button lesson-button">Others</p>
+            </div>
+            <br>
+            <p id="credit-button" class="head-button cred-button">Credits</p>
         </div>
     </div>
     <div class="startup-title">
@@ -19,6 +30,15 @@
         <h2>All you need to know about Speedcubing!</h2>
     </div>
 </section>
+<main>
+    <section class="cred-sec inactive" id="cred-sec">
+        <div class="top-bar">
+            <div class="top-bar-toggle">
+                <i class="fa-solid fa-arrow-up"></i>
+            </div>
+        </div>
+    </section>
+</main>
 </body>
 <script src="app.js"></script>
 </html>

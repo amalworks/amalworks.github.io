@@ -5,9 +5,19 @@
     --col-2: #B33F00;
     --col-3: #00B3AD;
 }
+section{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
 body{
     font-family:Bahnschrift, sans-serif;
     background-color: var(--sec-col);
+}
+p{
+    color: var(--prim-col);
 }
 h1{
     font-size: 3.5rem;
@@ -19,7 +29,7 @@ h1{
     background: rgba(0, 0, 0, 0.2);
     top: 0;
     left: 0;
-    margin-top: 100px;
+    margin-top: 200px;
     margin-left: -50px;
     width: 100%;
     padding: 10px;
@@ -49,7 +59,10 @@ h1{
     top: 0;
     left: 0;
     width: 300px;
+    height: 85px;
     padding: 10px;
+    margin: auto;
+    transition: .2s all ease-in-out;
 }
 .startup-screen{
     display: grid;
@@ -62,7 +75,7 @@ h1{
     width: 100%;
     text-align: center;
 }
-#proceed-button{
+.head-button{
     font-size: 2rem;
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 20px;
@@ -70,12 +83,84 @@ h1{
     margin: auto;
     transition: .2s all ease-in-out;
 }
-#proceed-button:hover{
+.head-button:hover{
     background-color: rgba(0, 0, 0, 0.2);
 }
 .active{
     visibility: visible;
+    animation: scaleAnimIn .4s ease-in-out;
+}
+@keyframes scaleAnimIn {
+    0%{opacity: 0}
+    100%{opacity: 100%}
+}
+@keyframes scaleAnimOut {
+    0%{opacity: 100%}
+    100%{opacity: 0}
 }
 .inactive{
     visibility: hidden;
+    animation: scaleAnimOut .4s ease-in-out;
+    transform: scale(0);
+}
+.sec-header{
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 80%;
+    height: 100px;
+    border-radius: 20px;
+    margin: auto;
+}
+.sec{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.lesson-choose-bar{
+    opacity: 0;
+    visibility: visible;
+    scale: 0;
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    width: 80%;
+    margin: auto;
+    transition: .2s all ease-in-out;
+    animation: lcb-anim .2s ease-in-out;
+}
+@keyframes lcb-anim{
+    0%{transform: scaleY(0)}
+    100%{transform: scaleY(1)}
+}
+.lesson-button{
+    margin-top: 10px;
+}
+.cred-button{
+    margin-top: -300px;
+}
+.top-bar{
+    width: 100%;
+    height: 70px;
+    background-color: var(--col-3);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+.top-bar-toggle{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: var(--col-3);
+    width: 60px;
+    height: 30px;
+    margin: 70px auto auto;
+}
+i{
+    text-align: center;
+    color: white;
+    margin: auto;
+    top: 0;
+    left: 0;
+    position: absolute;
 }
